@@ -1,4 +1,4 @@
-j{application, rpool,
+{application, rpool,
  [
   {description, "A Redis client pool based on Poolboy"},
   {vsn, "1"},
@@ -7,7 +7,7 @@ j{application, rpool,
 		  kernel,
 		  stdlib
 		 ]},
-  {mod, { pooling_app, []}},
+  {mod, { rpool_app, []}},
   {env, [
 	 {pools, [
 		  {redispool, [
