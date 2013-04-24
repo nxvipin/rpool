@@ -1,12 +1,19 @@
-{application, rpool,
+j{application, rpool,
  [
-  {description, ""},
+  {description, "A Redis client pool based on Poolboy"},
   {vsn, "1"},
   {registered, []},
   {applications, [
-                  kernel,
-                  stdlib
-                 ]},
-  {mod, { rpool_app, []}},
-  {env, []}
+		  kernel,
+		  stdlib
+		 ]},
+  {mod, { pooling_app, []}},
+  {env, [
+	 {pools, [
+		  {redispool, [
+			   {size, 10},
+			   {max_overflow, 20}
+			  ]}
+		 ]}
+	]}
  ]}.
