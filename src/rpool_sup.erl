@@ -9,8 +9,6 @@
 %% Supervisor callbacks
 -export([init/1]).
 
-%% Helper macro for declaring children of supervisor
--define(CHILD(I, Type), {I, {I, start_link, []}, permanent, 5000, Type, [I]}).
 
 %% ===================================================================
 %% API functions
@@ -24,5 +22,13 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
-    {ok, { {one_for_one, 5, 10}, []} }.
+    {ok, Pools} = application:get_env(rpool, pools),
+    PoolSpecs = lists:map(fun({PoolName, PoolConfig}) ->
+        Args = [{name, {local, PoolName}},
+                {worker_module, rpool_worker}]
+                ++ PoolConfig,
+        {PoolName, {poolboy, start_link, [Args]},
+                    permanent, 5000, worker, [poolboy]}
+    end, Pools),
+    {ok, {{one_for_one, 10, 10}, PoolSpecs}}.
 
