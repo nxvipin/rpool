@@ -14,6 +14,7 @@
 -export([
 	 get/2,
 	 set/3,
+	 del/2,
 	 sadd/3,
 	 srem/3,
 	 sismember/3
@@ -34,6 +35,8 @@ get(PoolName, Key) ->
 set(PoolName, Key, Value) ->
     q(PoolName, ["SET", Key, Value]).
 
+del(PoolName, Key) ->
+	q(PoolName, ["DEL", Key]).
 
 %% Set Operations
 sadd(PoolName, Key, Value) ->
