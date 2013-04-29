@@ -24,7 +24,7 @@ start_link() ->
 init([]) ->
     {ok, Pools} = application:get_env(rpool, pools),
     PoolSpecs = lists:map(fun({PoolName, PoolConfig}) ->
-        Args = [{name, {local, PoolName}},
+        Args = [{name, {global, PoolName}},
                 {worker_module, rpool_worker}]
                 ++ PoolConfig,
         {PoolName, {poolboy, start_link, [Args]},
