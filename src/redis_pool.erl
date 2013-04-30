@@ -18,7 +18,7 @@
 	 sadd/3,
 	 srem/3,
 	 sismember/3,
-	 smembers/2,
+	 smembers/2
 	]).
 
 
