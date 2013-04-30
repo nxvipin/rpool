@@ -17,7 +17,8 @@
 	 del/2,
 	 sadd/3,
 	 srem/3,
-	 sismember/3
+	 sismember/3,
+	 smembers/2,
 	]).
 
 
@@ -47,3 +48,6 @@ srem(PoolName, Key, Value) ->
 
 sismember(PoolName, Key, Value) ->
     q(PoolName, ["SISMEMBER", Key, Value]).
+
+smemebers(PoolName, Key) ->
+	q(PoolName, ["SMEMBERS", Key]).
