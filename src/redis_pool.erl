@@ -49,5 +49,5 @@ srem(PoolName, Key, Value) ->
 sismember(PoolName, Key, Value) ->
     q(PoolName, ["SISMEMBER", Key, Value]).
 
-smemebers(PoolName, Key) ->
+smembers(PoolName, Key) ->
 	q(PoolName, ["SMEMBERS", Key]).
